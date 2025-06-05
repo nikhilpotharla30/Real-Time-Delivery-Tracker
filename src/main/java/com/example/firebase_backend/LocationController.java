@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 public class LocationController {
     private final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
 
-    // ✅ POST: Add or update location
+   
     @PostMapping("/location/{driverId}")
     public String updateLocation(@PathVariable String driverId, @RequestBody Map<String, Object> data) {
         driverId = driverId.trim(); // ✅ Remove newline/space characters
@@ -18,7 +18,7 @@ public class LocationController {
         return "✅ Location updated for: " + driverId;
     }
 
-    // ✅ GET: Read location from Firebase and return JSON
+   
     @GetMapping("/location/{driverId}")
     public CompletableFuture<Map<String, Object>> getLocation(@PathVariable String driverId) {
         driverId = driverId.trim(); // ✅ Remove newline/space characters

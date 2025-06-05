@@ -13,15 +13,15 @@ public class LocationController {
    
     @PostMapping("/location/{driverId}")
     public String updateLocation(@PathVariable String driverId, @RequestBody Map<String, Object> data) {
-        driverId = driverId.trim(); // ✅ Remove newline/space characters
+        driverId = driverId.trim(); 
         dbRef.child("drivers").child(driverId).setValueAsync(data);
-        return "✅ Location updated for: " + driverId;
+        return "Location updated for: " + driverId;
     }
 
    
     @GetMapping("/location/{driverId}")
     public CompletableFuture<Map<String, Object>> getLocation(@PathVariable String driverId) {
-        driverId = driverId.trim(); // ✅ Remove newline/space characters
+        driverId = driverId.trim(); // 
         CompletableFuture<Map<String, Object>> future = new CompletableFuture<>();
         dbRef.child("drivers").child(driverId)
             .addListenerForSingleValueEvent(new ValueEventListener() {
